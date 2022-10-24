@@ -1,0 +1,31 @@
+buildscript {
+    repositories {
+        maven {
+            url "https://plugins.gradle.org/m2/"
+        }
+    }
+}
+
+plugins {
+    id 'groovy'
+}
+
+group = 'reproducer'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = JavaVersion.VERSION_17
+
+repositories {
+    mavenCentral()
+}
+
+ext {
+    groovyVersion    = '4.0.5'
+}
+
+dependencies {
+    implementation "org.apache.groovy:groovy:$groovyVersion"
+}
+
+tasks.withType(GroovyCompile) {
+    groovyOptions.fork = false
+}
